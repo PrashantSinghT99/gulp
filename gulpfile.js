@@ -1,3 +1,4 @@
+// import gulp from 'gulp';
 const { src, dest, series, watch } = require('gulp');
 // const uglifycss=require("gulp-uglifycss");
 // styles
@@ -22,6 +23,7 @@ function scripts() {
         .pipe(jsMinify())
         .pipe(dest('./frontend/dist/scripts/'))
 }
+
 //gulp.series function is used to define a series of tasks that should be executed in sequential order. 
 //watch task 
 function watchTask() {
@@ -33,15 +35,4 @@ function watchTask() {
         series(styles, scripts)
     )
 }
-
-/*Define a task to concatenate JavaScript files
-gulp.task('concat-js', () => {
-    return gulp.src('src/js/*.js')
-      .pipe(concat('app.js'))
-      .pipe(gulp.dest('dist/js'));
-  });
-  
-  Define a default task that runs all defined tasks
-  gulp.task('default', gulp.parallel('minify-css', 'concat-js'));*/
-
 exports.default = series(styles, scripts, watchTask);
