@@ -1,0 +1,1 @@
+const jsminify=()=>{console.log({name:"Prashant",age:23})};
